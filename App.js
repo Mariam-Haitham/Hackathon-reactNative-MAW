@@ -1,6 +1,20 @@
 import React, { Component } from "react";
+
 import { Spinner } from "native-base";
 import Welcome from "./components/Welcome";
+
+
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
+
+//redux
+import store from "./redux/reducers";
+import { Provider } from "react-redux";
+
+//components
+import LoginForm from "./components/LoginForm";
+import AddChannels from "./components/AddChannels";
 
 export default class App extends Component {
   state = {
@@ -16,9 +30,17 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <Spinner color="black" />;
+
+    console.disableYellowBox = true;
+    if (!this.state.isReady) {
+      return <AppLoading />;
     }
-    return <Welcome />;
+
+    return (
+      <Provider store={store}>
+        <Welcome />
+      </Provider>
+    );
+
   }
 }

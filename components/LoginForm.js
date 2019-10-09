@@ -15,27 +15,34 @@ import {
 import { connect } from "react-redux";
 import { login, signup, checkForExpiredToken, logout } from "../redux/actions";
 
+import Channels from "./Channels";
+
 class LoginForm extends Component {
   state = {
     username: "",
     password: ""
   };
+
   componentDidMount = () => {
     this.props.checkForToken();
   };
 
-  ButtonsView() {
+  ButtonsView = () => {
     if (this.props.user) {
       return (
-        <Button onPress={() => this.props.logout()}>
-          <Text>Logout</Text>
-        </Button>
+        <View>
+          <Button onPress={() => this.props.logout()}>
+            <Text>Logout</Text>
+          </Button>
+        </View>
       );
     } else {
       return (
         <View>
           <Button
-            onPress={() => this.props.login(this.state, this.props.navigation)}
+            onPress={() => {
+              this.props.login(this.state, this.props.navigation);
+            }}
           >
             <Text>Login</Text>
           </Button>
@@ -47,12 +54,16 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
-  FieldsView() {
+  FieldsView = () => {
     const { username, password } = this.state;
     if (this.props.user) {
-      return <H1 style={{ marginTop: 15, marginBottom: 15 }}>Welcome !</H1>;
+      return (
+        <View>
+          <H1 style={{ marginTop: 15, marginBottom: 15 }}>Welcome !</H1>
+        </View>
+      );
     } else {
       return (
         <View>
@@ -76,10 +87,9 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Header />
@@ -95,7 +105,8 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.rootAuth.user
+  user: state.rootAuth.user,
+  errors: state.errors
 });
 const mapDispatchToProps = dispatch => {
   return {

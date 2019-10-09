@@ -2,7 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import channelsReducer from "./channels";
 import authReducer from "./authReducer";
+
+import errorReducer from "./errors";
 
 const middlewares = [thunk];
 
@@ -11,7 +14,9 @@ const enhancer = composeWithDevTools({
 })(applyMiddleware(...middlewares));
 
 const rootReducer = combineReducers({
-  rootAuth: authReducer
+  rootChannels: channelsReducer,
+  rootAuth: authReducer,
+  errors: errorReducer
 });
 
 const store = createStore(rootReducer, enhancer);

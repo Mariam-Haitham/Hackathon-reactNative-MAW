@@ -1,10 +1,12 @@
+import { setErrors } from "./errors";
 import { SET_CURRENT_USER } from "./types";
+
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { AsyncStorage } from "react-native";
 
 const instance = axios.create({
-  baseURL: "http://178.128.114.232/api/"
+  baseURL: "https://api-chatr.herokuapp.com/"
 });
 
 export const checkForExpiredToken = navigation => {
@@ -57,8 +59,12 @@ export const login = (userData, navigation) => {
       setAuthToken(user.token);
       dispatch(setCurrentUser(decodedUser));
       //navigation.replace("Profile");
+      // dispatch(setErrors(""));
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      // dispatch(
+      //   setErrors("Invalid input, please check the username and password!!")
+      // );
     }
   };
 };
@@ -66,10 +72,14 @@ export const login = (userData, navigation) => {
 export const signup = (userData, navigation) => {
   return async dispatch => {
     try {
-      await instance.post("register/", userData);
+      await instance.post("signup/", userData);
       dispatch(login(userData, navigation));
+      // dispatch(setErrors(""));
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      // dispatch(
+      //   setErrors("Invalid input, please check the username and password!!")
+      // );
     }
   };
 };
