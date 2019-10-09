@@ -1,7 +1,7 @@
-
 import { ADD_CHANNEL, FETCH_CHANNELS } from "./types";
 import { setErrors } from "./errors";
 import axios from "axios";
+
 export const addChannel = channel => {
   return async dispatch => {
     // console.log("hello", channel);
@@ -22,6 +22,9 @@ export const addChannel = channel => {
     } catch (error) {
       console.error(error.response.data);
       dispatch(setErrors("Invalid input!!"));
+    }
+  };
+};
 
 export const fetchChannels = () => {
   return async dispatch => {
@@ -36,7 +39,6 @@ export const fetchChannels = () => {
       });
     } catch (error) {
       console.log(error);
-
     }
   };
 };
