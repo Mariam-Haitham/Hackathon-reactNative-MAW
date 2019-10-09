@@ -1,6 +1,9 @@
-import { ADD_CHANNEL } from "../actions/types";
+
+import { ADD_CHANNEL, FETCH_CHANNELS } from "../actions/types";
+
 const initialState = {
-  channels: []
+  channels: [],
+  loading: true
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +13,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         channels: [newChannel, ...state.channels]
+    case FETCH_CHANNELS:
+      return {
+        ...state,
+        channels: action.payload,
+        loading: false
       };
     default:
       return state;

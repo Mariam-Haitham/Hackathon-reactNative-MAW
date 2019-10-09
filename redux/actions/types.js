@@ -1,2 +1,3 @@
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const ADD_CHANNEL = "ADD_CHANNEL";
+
+export const FETCH_CHANNELS = "FETCH_CHANNELS";
