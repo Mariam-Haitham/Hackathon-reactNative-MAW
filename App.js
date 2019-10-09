@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 
 //components
 import LoginForm from "./components/LoginForm";
-
+import AddChannels from "./components/AddChannels";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +34,7 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        <LoginForm />
+        <AddChannels />
       </Provider>
     );
   }
