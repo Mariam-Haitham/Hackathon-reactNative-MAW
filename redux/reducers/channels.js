@@ -1,4 +1,5 @@
-import { FETCH_CHANNELS } from "../actions/types";
+
+import { ADD_CHANNEL, FETCH_CHANNELS } from "../actions/types";
 
 const initialState = {
   channels: [],
@@ -7,6 +8,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_CHANNEL:
+      const newChannel = action.payload;
+      return {
+        ...state,
+        channels: [newChannel, ...state.channels]
     case FETCH_CHANNELS:
       return {
         ...state,

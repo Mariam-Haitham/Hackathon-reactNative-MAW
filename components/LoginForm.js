@@ -27,7 +27,7 @@ class LoginForm extends Component {
     this.props.checkForToken();
   };
 
-  ButtonsView() {
+  ButtonsView = () => {
     if (this.props.user) {
       return (
         <View>
@@ -54,9 +54,9 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
-  FieldsView() {
+  FieldsView = () => {
     const { username, password } = this.state;
     if (this.props.user) {
       return (
@@ -87,7 +87,7 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
   render() {
     return (
