@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import channelsReducer from "./channels";
 import authReducer from "./authReducer";
+
 import errorReducer from "./errors";
 
 const middlewares = [thunk];
