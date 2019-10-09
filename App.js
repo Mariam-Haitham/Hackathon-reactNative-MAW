@@ -28,6 +28,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     if (!this.state.isReady) {
       return <AppLoading />;
     }
