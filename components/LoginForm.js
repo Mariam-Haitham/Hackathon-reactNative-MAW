@@ -24,7 +24,7 @@ class LoginForm extends Component {
     this.props.checkForToken();
   };
 
-  ButtonsView() {
+  ButtonsView = () => {
     if (this.props.user) {
       return (
         <Button onPress={() => this.props.logout()}>
@@ -47,9 +47,9 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
-  FieldsView() {
+  FieldsView = () => {
     const { username, password } = this.state;
     if (this.props.user) {
       return <H1 style={{ marginTop: 15, marginBottom: 15 }}>Welcome !</H1>;
@@ -76,7 +76,7 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
   render() {
     console.log(this.state);
