@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     fetchChannels: () => dispatch(fetchChannels())
   };
 };
-
+//just a comment ..
 export default connect(
   mapStateToProps,
   mapDispatchToProps
